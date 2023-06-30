@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Speech to Text</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  </head>
+  <body>
+    <h1>Speech to Text</h1>
+    <textarea id="textInput" rows="4" cols="50"></textarea>
+    <button id="convertButton">Convert</button>
+
+    <button id="start-btn">Start</button>
+    <button id="stop-btn">Stop</button>
+    <div id="output"></div>
+
+    <script>
+           
+
+
+        function convertTextToSpeech(text) {
+            $.ajax({
+                url: '/text-to-speech',
+                method: 'POST',
+                data: { text: text },
+                xhrFields: {
+                    responseType: 'blob' // Set the response type to 'blob' to handle binary data
+                },
+                success: function(response) {
+                    var blob = new Blob([response], { type: 'audio/mp3' });
+                    var audioUrl = URL.createObjectURL(blob);
+                    var a = document.createElement('a');
+                    a.href = audioUrl;
+                    a.download = 'audio.mp3';
+                    a.click();
+                },
+                error: function(error) {
+                    console.error('Error converting text to speech:', error);
+                }
+            });
+        }
+        $(document).ready(function() {
+            $('#convertButton').click(function() {
+                var text = $('#textInput').val();
+                convertTextToSpeech(text);
+            });
+        });
+      const SpeechRecognition =
+        window.SpeechRecognition || window.webkitSpeechRecognition;
+      const recognition = new SpeechRecognition();
+
+      const output = document.querySelector("#output");
+      const startBtn = document.querySelector("#start-btn");
+      const stopBtn = document.querySelector("#stop-btn");
+      var transcript_temp  = ""
+      recognition.continuous = true;
+      recognition.addEventListener("result", (event) => {
+        const transcript = Array.from(event.results)
+          .map((result) => result[0].transcript)
+          .join("");
+          transcript_temp = transcript
+            console.log("Text Contact",transcript)
+        output.textContent = transcript;
+      });
+      function sendText(text) {
+            $.ajax({
+                url: '/text',
+                method: 'POST',
+                data: { text: text },
+                success: function(response) {
+                    console.log('Text sent successfully');
+                    // Handle the response from the Flask server if needed
+                },
+                error: function(error) {
+                    console.error('Error sending text:', error);
+                }
+            });
+        }
+
+      startBtn.addEventListener("click", () => {
+        recognition.start();
+      });
+
+      stopBtn.addEventListener("click", () => {
+        recognition.stop();
+        console.log("Text Contact11 ",transcript_temp)
+        sendText(transcript_temp)
+      });
+
+      
+    </script>
+  </body>
+</html>

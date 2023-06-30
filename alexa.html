@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chatbot Example</title>
+    <script>
+        function startListening() {
+            const recognition = new window.webkitSpeechRecognition();
+            recognition.continuous = true;
+            recognition.interimResults = true;
+
+            recognition.onresult = function(event) {
+                const result = event.results[event.results.length - 1];
+                const input = result[0].transcript;
+
+                const xhr = new XMLHttpRequest();
+                xhr.open('POST', '/chat', true);
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                        const output = xhr.responseText;
+                        const chatContainer = document.querySelector('#chat-container');
+                        const bubble = document.createElement('div');
+                        bubble.classList.add('chat-bubble');
+                        bubble.classList.add('user');
+                        bubble.textContent = input;
+                        chatContainer.appendChild(bubble);
+                        const botBubble = document.createElement('div');
+                        botBubble.classList.add('chat-bubble');
+                        botBubble.classList.add('bot');
+                        botBubble.textContent = output;
+                        chatContainer.appendChild(botBubble);
+                    }
+                };
+                xhr.send('text=' + encodeURIComponent(input));
+            };
+
+            recognition.onerror = function(event) {
+                console.log(event);
+            };
+
+            recognition.start();
+        }
+    </script>
+</head>
+<body>
+    <h1>Chatbot Example</h1>
+    <button type="button" onclick="startListening()">Start Listening</button>
+    <div id="chat-container"></div>
+    <script>
+        const container = document.querySelector('#chat-container');
+    </script>
+</body>
+</html>

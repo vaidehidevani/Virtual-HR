@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Speech Recording</title>
+</head>
+<body>
+    <h1>Speech Recording</h1>
+    
+    <button id="startButton">Start Recording</button>
+    <button id="stopButton">Stop Recording</button>
+    
+    <script>
+        let recorder;
+        let chunks = [];
+        
+        const startRecording = () => {
+            navigator.mediaDevices.getUserMedia({ audio: true })
+                .then(stream => {
+                    recorder = new MediaRecorder(stream);
+                    recorder.ondataavailable = e => chunks.push(e.data);
+                    recorder.start();
+                })
+                .catch(error => console.error('Error accessing microphone:', error));
+        };
+        
+        const stopRecording = () => {
+            recorder.stop();
+            recorder.onstop = () => {
+                const audioBlob = new Blob(chunks, { type: chunks[0].type });
+                const audioUrl = URL.createObjectURL(audioBlob);
+                sendAudioData(audioBlob);
+            };
+            chunks = [];
+        };
+        
+        const sendAudioData = audioBlob => {
+            const formData = new FormData();
+            formData.append('audio', audioBlob);
+            
+            fetch('/speech', { method: 'POST', body: formData })
+                .then(response => {
+                    console.log('Speech sent successfully');
+                    // Handle the response from the Flask server if needed
+                })
+                .catch(error => console.error('Error sending speech:', error));
+        };
+        
+        document.getElementById('startButton').addEventListener('click', startRecording);
+        document.getElementById('stopButton').addEventListener('click', stopRecording);
+    </script>
+</body>
+</html>
