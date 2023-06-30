@@ -1,1 +1,3 @@
 # Virtual-HR
+About Project 
+The project aims to develop a computer vision system that optimizes the recruitment process by predicting emotions from facial expressions in real-time. Through machine learning, the system will be trained to analyze candidates' facial expressions during interviews, allowing it to assess their confidence levels. By comparing the candidates' responses with the expected responses stored in the system, the tool aims to efficiently identify qualified candidates. This virtual HR system has the potential to save valuable time and resources, enabling organizations to quickly identify suitable candidates for the next round of interviews.
