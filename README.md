@@ -1,8 +1,8 @@
-# Virtual-HR
+
 <p align="center"> 
   <img src="Template/Emotion_recognisation.gif" alt="img Logo" >
 </p>
-<h1 align="center"> Emotion Recognition </h1>
+<h1 align="center"> Virtual-HR </h1>
 <h3 align="center"> This project used two models to predict the emotions which are video and audio model. In both models we are using Convolutional Neural Network (CNN).</h3>  
 
 </br>
@@ -14,7 +14,7 @@
 <h2 id="about-the-project"> :pencil: About The Project</h2>
 
 <p align="justify"> 
- The project aims to develop a system that uses computer vision techniques to predict emotions from facial expressions in real-time. This is achieved through the use of convolutional neural network (CNN) models trained on large datasets of labeled images and expressions. The goal is to provide a tool for therapists to better understand their clients' emotional states and tailor their therapy approaches accordingly, with the ultimate goal of improving and accelerating the therapy process. This project has the potential to make a valuable contribution to the field of therapy and mental health.
+ The project aims to develop a computer vision system that optimizes the recruitment process by predicting emotions from facial expressions in real time. Through machine learning, the system will be trained to analyze candidates' facial expressions during interviews, allowing it to assess their confidence levels. By comparing the candidates' responses with the expected responses stored in the system, the tool aims to efficiently identify qualified candidates. This virtual HR system has the potential to save valuable time and resources, enabling organizations to quickly identify suitable candidates for the next round of interviews.
 </p>
 <!-- PRE-PROCESSED DATA -->
 <h2 id="Problem-statement"> :diamond_shape_with_a_dot_inside: Problem Statement</h2>
