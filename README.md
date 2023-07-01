@@ -67,7 +67,7 @@ The following open-source packages are used in this project:
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Email: <a>AK667@myscc.ca</a> <br>
 
   :man_student: <b>Japneet Singh Kukreja </b> <br>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Email: <a>@myscc.ca</a> <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Email: <a>W0798594@myscc.ca</a> <br>
   
   
 </p>
