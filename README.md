@@ -61,7 +61,7 @@ The following open-source packages are used in this project:
    
   :man_student: <b>Vaidehi Devani </b> <br>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Email: <a>W0808561@myscc.ca</a> <br>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GitHub: <a href="https://github.com/Rajojla">@ma-Rajojla</a> <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GitHub: <a href="https://github.com/Rajojla">@vaidehidevani</a> <br>
   
   :man_student: <b>Amanpreet Kaur</b> <br>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Email: <a>@myscc.ca</a> <br>
